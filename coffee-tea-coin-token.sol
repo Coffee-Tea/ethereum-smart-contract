@@ -271,14 +271,14 @@ contract Crowdsale is Ownable {
         restricted = 0xb3eD172CC64839FB0C0Aa06aa129f402e994e7De;
         restrictedPercent = 40;
         rate = 100000000000000000000; // 100
-        start = 1508176800;
+        start = 1508436000;
         hardcap = 10000000000000000000000; // 10000
         period = 28;
-        bonuses["firstPeriod"]["lastDay"] = 7;
+        bonuses["firstPeriod"]["lastDay"] = 7 * 1 days;
         bonuses["firstPeriod"]["percent"] = 25;
-        bonuses["secondPeriod"]["lastDay"] = 14;
+        bonuses["secondPeriod"]["lastDay"] = 14 * 1 days;
         bonuses["secondPeriod"]["percent"] = 10;
-        bonuses["thirdPeriod"]["lastDay"] = 21;
+        bonuses["thirdPeriod"]["lastDay"] = 21 * 1 days;
         bonuses["thirdPeriod"]["percent"] = 5;
     }
     
@@ -295,7 +295,6 @@ contract Crowdsale is Ownable {
         // First bonus period
         if (now < start + bonuses["firstPeriod"]["lastDay"]) {
           bonusTokens = tokensAmount.div(100).mul(bonuses["firstPeriod"]["percent"]);
-          
         // Second bonus period
         } else if (now >= bonuses["firstPeriod"]["lastDay"] && now < start + bonuses["secondPeriod"]["lastDay"]) {
           bonusTokens = tokensAmount.div(100).mul(bonuses["secondPeriod"]["percent"]);
